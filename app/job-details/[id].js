@@ -1,12 +1,12 @@
 import React, { useState, useCallback} from 'react'
 import { View, Text, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from 'react-native';
-import { Stack, useRouter, useLocalSearchParams, useSearchParams } from 'expo-router';
+import { Stack, useRouter, useSearchParams } from 'expo-router';
 
 import { Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn, Specifics } from '../../components'
 import { COLORS, icons, SIZES } from '../../constants';
 import { useFetchJobs } from '../../hooks/useFetchJobs';
 
-const tabs = ["About", "Qualifications", "Responsibilities", "Requirements"];
+const tabs = ["About", "Qualifications", "Responsibilities"];
 
 const JobDetails = () => {
   const params = useSearchParams();
@@ -20,9 +20,9 @@ const JobDetails = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
-    // setRefreshing(true);
-    // refetch()
-    // setRefreshing(false)
+    setRefreshing(true);
+    refetch()
+    setRefreshing(false)
   }, []);
 
   const displayTabContent = () => {
